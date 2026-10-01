@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A personal introduction and portfolio for Sofia DiFede.">
+  <title>Sofia DiFede — Personal Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fff8fa;
+      --ink: #3b2a31;
+      --muted: #7b5d68;
+      --line: #f2dfe7;
+      --coral: #e9a4b7;
+      --rose: #f8dfe8;
+      --pink: #f5c7d6;
+      --display: "Playfair Display", Georgia, serif;
+      --body: "DM Sans", sans-serif;
+      --mono: "DM Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .shell { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .topbar {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .wordmark { font-size: 15px; font-weight: 700; text-decoration: none; }
+    .wordmark span { color: var(--coral); }
+    .nav { display: flex; align-items: center; gap: 34px; }
+    .nav a {
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+    .nav a:hover, .text-link:hover { color: var(--coral); }
+    .nav .contact-link { font-weight: 700; }
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: center;
+      padding-block: 78px 88px;
+    }
+    .eyebrow, .section-label, .project-type {
+      font: 500 11px/1.4 var(--mono);
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .eyebrow { display: flex; align-items: center; gap: 11px; color: var(--muted); }
+    .eyebrow::before { content: ""; width: 25px; height: 1px; background: var(--coral); }
+    h1 {
+      max-width: 670px;
+      margin: 27px 0 21px;
+      font: 500 clamp(54px, 6.2vw, 82px)/1.02 var(--display);
+      letter-spacing: 0;
+    }
+    h1 em { color: var(--coral); font-weight: 500; }
+    .intro {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 27px; margin-top: 34px; }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      padding: 0 18px;
+      background: var(--ink);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+    .button:hover { background: var(--coral); transform: translateY(-2px); }
+    .button svg { width: 15px; height: 15px; }
+    .text-link { font-size: 13px; font-weight: 600; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .portrait-wrap { width: 100%; max-width: 430px; justify-self: end; position: relative; }
+    .portrait-frame {
+      position: relative;
+      z-index: 1;
+      aspect-ratio: 4 / 4.7;
+      overflow: hidden;
+      background: var(--rose);
+    }
+    .portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; filter: saturate(.83); }
+    .portrait-backdrop {
+      position: absolute;
+      width: 74%;
+      height: 74%;
+      right: -20px;
+      bottom: -21px;
+      background: var(--pink);
+    }
+    .photo-note {
+      position: absolute;
+      z-index: 2;
+      left: -37px;
+      bottom: 25px;
+      padding: 13px 16px;
+      background: var(--paper);
+      color: var(--muted);
+      font: 400 10px/1.5 var(--mono);
+      text-transform: uppercase;
+    }
+    .about {
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 70px;
+      padding-block: 76px 82px;
+    }
+    .section-label { color: var(--coral); }
+    h2 { margin: 14px 0 0; font: 500 38px/1.15 var(--display); }
+    .about-copy { max-width: 660px; }
+    .about-copy p { margin: 0 0 16px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .detail { padding: 24px 24px 27px 0; }
+    .detail + .detail { padding-left: 24px; border-left: 1px solid var(--line); }
+    .detail-label { display: block; margin-bottom: 10px; color: var(--muted); font: 400 10px/1.4 var(--mono); text-transform: uppercase; }
+    .detail-value { font-size: 14px; font-weight: 600; }
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 24px 32px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .socials { display: flex; gap: 20px; }
+    .socials a { text-decoration: none; }
+    .socials a:hover { color: var(--coral); }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 40px, 560px); }
+      .topbar { height: 70px; }
+      .nav { gap: 18px; }
+      .nav a { font-size: 12px; }
+      .nav a:first-child { display: none; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 45px; padding-block: 66px 74px; }
+      h1 { max-width: 570px; font-size: clamp(55px, 12vw, 76px); }
+      .intro { font-size: 16px; }
+      .portrait-wrap { width: min(82%, 390px); justify-self: center; margin-right: 12px; }
+      .photo-note { left: -25px; }
+      .about { grid-template-columns: 1fr; gap: 25px; padding-block: 55px 60px; }
+      h2 { font-size: 34px; }
+      .details { grid-template-columns: 1fr; }
+      .detail, .detail + .detail { padding: 18px 0; border-left: 0; }
+      .detail + .detail { border-top: 1px solid var(--line); }
+    }
+    @media (max-width: 420px) {
+      .shell { width: calc(100% - 32px); }
+      .nav { gap: 14px; }
+      .hero-actions { gap: 18px; }
+      .button { padding-inline: 14px; }
+      footer { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar shell">
+    <a class="wordmark" href="#top" aria-label="Sofia DiFede, home">Sofia DiFede<span>.</span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#details">A few things</a>
+      <a class="contact-link" href="mailto:hello@example.com">Say hello <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero" aria-labelledby="intro-title">
+      <div class="hero-copy">
+        <div class="eyebrow">A little introduction</div>
+        <h1 id="intro-title">Hello, I’m <em>Sofia DiFede.</em></h1>
+        <p class="intro">I’m a college student at the University of South Florida.</p>
+        <div class="hero-actions">
+          <a class="button" href="#about">A bit about me <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a>
+          <a class="text-link" href="mailto:hello@example.com">Get in touch</a>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <div class="portrait-frame">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Portrait photograph to replace with your own" fetchpriority="high">
+        </div>
+        <div class="portrait-backdrop" aria-hidden="true"></div>
+        <div class="photo-note">A face to put to the name</div>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div>
+        <div class="section-label">01 / The short version</div>
+        <h2 id="about-title">A little about me</h2>
+      </div>
+      <div class="about-copy">
+        <p>I’m Sofia DiFede, and I spend my time going to class and bartending at my job in South Tampa. I’m at my best when I’m learning something new, working with thoughtful people, and turning a rough idea into something useful.</p>
+        <p>Outside of work, you’ll usually find me taking walks on Bayshore, watching DWTS, or hanging out with my friends. This is the short version; the longer one starts over a good conversation. Reach out to me on LinkedIn.</p>
+      </div>
+    </section>
+
+    <section class="details" id="details" aria-label="A few more details">
+      <div class="detail"><span class="detail-label">Currently</span><span class="detail-value">[What you’re working on]</span></div>
+      <div class="detail"><span class="detail-label">Based in</span><span class="detail-value">Tampa, Florida</span></div>
+      <div class="detail"><span class="detail-label">Curious about</span><span class="detail-value">[A few interests]</span></div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <span>© 2026 Sofia DiFede</span>
+    <div class="socials" aria-label="Social links">
+      <a href="https://www.linkedin.com/in/sofia-difede" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+    </div>
+  </footer>
+</body>
+</html>
